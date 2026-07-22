@@ -1,0 +1,209 @@
+/* Contacts.module.css */
+
+.wrapper {
+  padding: 4rem 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+/* ЛЕВАЯ КОЛОНКА */
+.leftCol {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.label {
+  font-family: 'DrukCyr', Arial, sans-serif;
+  font-weight: 500;
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 1.875rem;
+  color: #E37428;
+}
+
+.title {
+  font-family: 'DrukCyr', Arial, sans-serif;
+  font-weight: 700;
+  font-size: 2.5rem;
+  line-height: 1.1;
+  color: white;
+}
+
+.infoBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: 1.5rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.infoItem {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.infoIcon {
+  font-size: 1.5rem;
+  color: #E37428;
+  width: 2rem;
+  text-align: center;
+}
+
+.infoLabel {
+  display: block;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+}
+
+.infoValue {
+  display: block;
+  font-size: 1.125rem;
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.infoValue:hover {
+  color: #E37428;
+}
+
+.subtitle {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1rem;
+  line-height: 1.6;
+  max-width: 500px;
+}
+
+/* СОЦСЕТИ */
+.links {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.contactBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1.75rem;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-family: 'Inter', sans-serif;
+  border: 1px solid #E37428;
+  background: transparent;
+  color: white;
+}
+
+.contactBtn:hover {
+  background-color: #E37428;
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.contactBtn svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+/* ПРАВАЯ КОЛОНКА — БОЛЬШАЯ ФОТО + КРУГ */
+.rightCol {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.imageWrapper {
+  position: relative;
+  width: 70%;
+  height: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Пульсирующие круги (чуть больше фото) */
+.circle1 {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, rgba(227, 116, 40, 0.35), transparent 100%);
+  animation: pulse 4s ease-in-out infinite;
+  z-index: 1;
+}
+
+
+
+/* Фотография — большая и с правильной формой */
+.photo {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 100%; /* Красивая овальная форма */
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  /* Растворение краев по кругу */
+  -webkit-mask-image: radial-gradient(circle at 50% 50%, black 40%, transparent 80%);
+  mask-image: radial-gradient(circle at 50% 50%, black 40%, transparent 80%);
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.08);
+    opacity: 1;
+  }
+}
+
+/* МОБИЛЬНАЯ АДАПТАЦИЯ */
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .title {
+    font-size: 2rem;
+  }
+  .links {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .contactBtn {
+    justify-content: center;
+  }
+  .imageWrapper {
+    width: 280px;
+    height: 340px;
+  }
+  .circle1 {
+    width: 290px;
+    height: 290px;
+  }
+  .circle2 {
+    width: 240px;
+    height: 240px;
+  }
+}

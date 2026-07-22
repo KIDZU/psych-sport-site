@@ -1,0 +1,206 @@
+/* Hero.module.css */
+
+.wrapper {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+/* Главная сетка с position: relative */
+.grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+.leftCol {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* ========== ТЕКСТ И КНОПКИ ========== */
+.badge {
+  font-family: 'Inter', sans-serif;
+  display: inline-block;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 0.4rem 1.5rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 1.5rem;
+  width: fit-content;
+  font-weight: 500;
+  color: white;
+}
+
+.title {
+  font-family: 'DrukCyr', Arial, sans-serif;
+  font-weight: 700;
+  font-size: 3rem;
+  line-height: 0.98;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
+}
+
+.titleAccent {
+  color: #E37428;
+}
+
+.desc {
+  color: #9CA3AF;
+  font-size: 1.125rem;
+  max-width: 500px;
+  margin-bottom: 2rem;
+  line-height: 1.5;
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.btnPrimary {
+  font-family: 'Inter', sans-serif;
+  background-color: #E37428;
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-size: 20px;
+}
+.btnPrimary:hover { background-color: #FF9A59; }
+
+.btnOutline {
+  font-family: 'Inter', sans-serif;
+  background: transparent;
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  border: 1px solid #E37428;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-size: 20px;
+}
+.btnOutline:hover { background-color: rgba(227, 116, 40, 0.1); }
+
+/* ========== КАРТИНКА ========== */
+.rightCol {
+  position: relative;
+  width: 100%;
+  height: 650px;
+  
+  /* Убираем жесткое скругление и обрезку, чтобы градиент мог рисовать по всей площади */
+  border-radius: 0;
+  overflow: visible; 
+  
+  display: flex;
+  justify-content: flex-end;
+}
+
+.mainImg {
+  width: 100%;
+  height: 100%;
+  
+  /* Большое скругление делает картинку "овальной" со всех сторон */
+  border-radius: 30%; 
+  
+  object-fit: cover;
+  object-position: 70% center;
+  display: block;
+}
+
+/* ===============================================
+   ЭФФЕКТ РАСТВОРЕНИЯ (ГРАДИЕНТ НА ЗАКРУГЛЕННУЮ КАРТИНКУ)
+   =============================================== */
+.imageOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+  
+  background: radial-gradient(
+    circle at 49% 38%,        /* Центр перехода */
+    transparent 35%,          /* Зона полной прозрачности (лицо) */
+    rgba(11, 14, 20, 0.5) 45%, /* Легкая дымка */
+    #0B0E14 75%               /* Полное слияние с фоном */
+  );
+}
+/* ========== ПЛАШКА (АБСОЛЮТНАЯ ПОВЕРХ ВСЕГО) ========== */
+.benefitsOverlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 3; /* Поверх всего, включая градиент */
+  
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  padding: 0 1.5rem 1.5rem 1.5rem;
+  pointer-events: none;
+}
+
+.benefitItem {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: rgba(26, 31, 46, 0.8);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 1.2rem 1.5rem;
+  width: 100%;
+  transition: transform 0.2s ease;
+  pointer-events: auto;
+}
+.benefitItem:hover { transform: translateY(-2px); }
+
+.benefitIcon {
+  font-size: 1.25rem;
+  color: #E37428;
+  background: rgba(227, 116, 40, 0.2);
+  padding: 10px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+}
+
+.benefitTitle { display: block; font-size: 0.875rem; font-weight: 600; color: white; }
+.benefitDesc { display: block; font-size: 0.75rem; color: rgba(255, 255, 255, 0.7); }
+
+/* ========== АДАПТИВНОСТЬ ========== */
+@media (min-width: 768px) {
+  .benefitsOverlay {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .rightCol { height: 700px; }
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+  .title { font-size: 5.5rem; }
+  .rightCol { height: 750px; }
+  
+  .benefitsOverlay {
+    padding: 0 3rem 2rem 0;
+    right: auto;
+    left: 0;
+  }
+}

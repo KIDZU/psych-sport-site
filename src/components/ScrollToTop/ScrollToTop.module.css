@@ -1,0 +1,60 @@
+/* ScrollToTop.module.css */
+
+.button {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #1A1F2E;
+  border: 1px solid rgba(227, 116, 40, 0.4);
+  color: #E37428;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+}
+
+.button.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.button:hover {
+  background-color: #E37428;
+  color: #ffffff;
+  border-color: #E37428;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(227, 116, 40, 0.4);
+}
+
+.button svg {
+  width: 24px;
+  height: 24px;
+  stroke: currentColor;
+  stroke-width: 2.5;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+@media (max-width: 600px) {
+  .button {
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 44px;
+    height: 44px;
+  }
+  .button svg {
+    width: 20px;
+    height: 20px;
+  }
+}
