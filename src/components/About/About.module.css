@@ -1,33 +1,19 @@
 /* About.module.css */
 
 .wrapper {
-  padding: 4rem 0;
+  padding: 3rem 1rem;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 .grid {
+  position: relative;
   display: grid;
   grid-template-columns: 1fr;
-  gap: 3rem;
-}
-
-.imageWrapper {
+  gap: 2rem;
   width: 100%;
-  border-radius: 1.5rem;
-  overflow: hidden;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-}
-
-.mainImg {
-  width: 100%;
-  height: auto;
-  display: block;
-  object-fit: cover;
-}
-
-.content {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  margin: 0 auto;
+  align-items: center;
 }
 
 .label {
@@ -36,25 +22,33 @@
   display: block;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
 }
 
 .labelAccent {
   color: #E37428;
 }
 
+.leftCol {
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
 .title {
   font-family: 'DrukCyr', Arial, sans-serif;
   font-weight: 700;
-  font-size: 1.875rem;
+  font-size: 1.8rem;
   line-height: 1.2;
   margin-bottom: 1.5rem;
 }
 
 .text p {
   color: #9CA3AF;
-  font-size: 0.875rem;
+  font-size: 0.95rem;
   line-height: 1.6;
   margin-bottom: 1rem;
 }
@@ -63,18 +57,95 @@
   margin-bottom: 0;
 }
 
-/* Адаптивность */
-@media (min-width: 768px) {
-  .grid {
-    /* Меняем пропорции: 4 части под фото, 6 частей под текст */
-    grid-template-columns: 4fr 6fr; 
-    align-items: center;
-    gap: 3rem;
-  }
+.rightCol {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
+/* Обертка только для фото + затемнение */
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+
+.mainImg {
+  width: 100%;
+  height: auto;
+  border-radius: 30%;
+  object-fit: cover;
+  object-position: 70% center;
+  display: block;
+  border: none;
+  background: transparent;
+}
+
+.imageOverlay {
+  display: none;
+}
+
+/* ========== ИНДИВИДУАЛЬНЫЙ АДАПТИВ ========== */
+
+/* Планшеты и телефоны: одна колонка, картинка сверху */
+@media (max-width: 1023px) {
+  .grid { gap: 2rem; }
+  .rightCol { order: -1; }
+}
+
+/* ПК: две колонки 50/50 */
 @media (min-width: 1024px) {
-   .title {
-    font-size: 3.25rem;
+  .wrapper { padding: 4rem 0; }
+  
+  .grid {
+    grid-template-columns: 3fr 4fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .label { font-size: 2rem; margin-bottom: 0.5rem; }
+  .leftCol { padding: 0; }
+  .title { font-size: 3rem; margin-bottom: 2rem; }
+  .text p { font-size: 1.05rem; }
+
+  .rightCol {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 650px;
+    width: 100%;
+  }
+
+  .imageWrapper {
+    width: 100%;
+    height: 100%;
+  }
+
+  .mainImg {
+    width: 100%;
+    height: 100%;
+    border-radius: 30%;
+    object-fit: cover;
+    object-position: 70% center;
+    display: block;
+  }
+
+  .imageOverlay {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    
+    background: radial-gradient(
+      circle at 50% 39%,
+      transparent 35%,
+      rgba(11, 14, 20, 0.7) 60%,
+      #0B0E14 72%
+    );
   }
 }

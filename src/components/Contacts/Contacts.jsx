@@ -78,7 +78,7 @@ const Contacts = () => {
             
             {/* Сама фотография (стиль как в Hero) */}
             <img 
-              src="/photo1.jpg" 
+              src="/medal.jpg" 
               alt="Мария Багрова" 
               className={styles.photo} 
             />

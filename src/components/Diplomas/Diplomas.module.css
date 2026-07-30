@@ -151,18 +151,8 @@
 }
 
 @media (max-width: 600px) {
-  .customPrev,
-  .customNext {
-    display: none !important;
-  }
+  .customPrev, .customNext { display: none !important; }
   .diplomaImage { height: 180px; }
-  .modalClose {
-    width: 34px;
-    height: 34px;
-    font-size: 20px;
-    top: 10px;
-    right: 10px;
-  }
 }
 
 @media (min-width: 768px) {

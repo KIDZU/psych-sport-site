@@ -23,7 +23,6 @@ const Hero = () => {
 
         <div className={styles.rightCol}>
           <img src="/photo1.jpg" alt="Мария Багрова" className={styles.mainImg} />
-          {/* ДОБАВЛЕННЫЙ СЛОЙ ДЛЯ ПРОЗРАЧНОСТИ ПО КРУГУ */}
           <div className={styles.imageOverlay}></div>
         </div>
 

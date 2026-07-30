@@ -1,4 +1,3 @@
-
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
@@ -78,14 +77,9 @@ const Testimonials = () => {
       <div className={styles.outerContainer}>
         <h2 className={styles.sectionTitle}>Что говорят спортсмены и родители</h2>
 
-        {/* 
-           ПРАВИЛЬНЫЙ ПОДХОД ПО ДОКУМЕНТАЦИИ:
-           Используем селекторы классов ('.swiper-button-prev'), 
-           а не React-рефы. Это заставляет Swiper переподключаться
-           при каждом рендере.
-        */}
-        <Swiper
+          <Swiper
           modules={[Navigation, Pagination, Autoplay]}
+          centeredSlides={true} /* ЭТО ВАЖНО! Центрирует слайд внутри каретки */
           spaceBetween={30}
           slidesPerView={1}
           loop={true}
@@ -112,11 +106,6 @@ const Testimonials = () => {
           ))}
         </Swiper>
 
-        {/* 
-           НАШИ СТИЛИЗОВАННЫЕ КНОПКИ.
-           Swiper найдет их по классам .swiper-button-prev и .swiper-button-next.
-           В них лежат SVG-иконки.
-        */}
         <div className={`swiper-button-prev ${styles.navBtn} ${styles.navBtnPrev}`}>
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
             <polyline points="15 18 9 12 15 6"></polyline>

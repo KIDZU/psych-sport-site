@@ -7,7 +7,6 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import styles from './Diplomas.module.css';
 
-// Обязательная настройка для react-modal
 Modal.setAppElement('#root');
 
 const diplomasData = [
@@ -80,7 +79,7 @@ const Diplomas = () => {
           modules={[Navigation, Pagination, Autoplay]}
           spaceBetween={20}
           slidesPerView={1}
-          slidesPerGroup={3}
+          slidesPerGroup={1}
           loop={true}
           autoplay={{ delay: 5000, disableOnInteraction: false }}
           pagination={{ clickable: true, type: 'bullets' }}
@@ -88,7 +87,20 @@ const Diplomas = () => {
             swiper.params.navigation.prevEl = prevRef.current;
             swiper.params.navigation.nextEl = nextRef.current;
           }}
-          breakpoints={{ 768: { slidesPerView: 3 } }}
+          breakpoints={{
+            640: {
+              slidesPerView: 1,
+              slidesPerGroup: 1,
+            },
+            768: {
+              slidesPerView: 2,
+              slidesPerGroup: 2,
+            },
+            1024: {
+              slidesPerView: 3,
+              slidesPerGroup: 3,
+            }
+          }}
         >
           {diplomasData.map((item) => (
             <SwiperSlide key={item.id} className={styles.slide}>

@@ -1,6 +1,17 @@
+import { useState } from 'react';
 import styles from './Nav.module.css';
 
 const Nav = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+
   return (
     <header className={styles.header}>
       <div className={styles.brand}>
@@ -8,12 +19,18 @@ const Nav = () => {
         <span className={styles.brandSub}>Спортивный психолог</span>
       </div>
       
-      <nav className={styles.navLinks}>
-        <a href="#about">Обо мне</a>
-        <a href="#services">Услуги</a>
-        <a href="#testimonials">Отзывы</a>
-        <a href="#diplomas">Дипломы</a>
-        <a href="#">Контакты</a>
+      <button className={styles.burger} onClick={toggleMenu} aria-label="Меню">
+        <span className={styles.burgerLine}></span>
+        <span className={styles.burgerLine}></span>
+        <span className={styles.burgerLine}></span>
+      </button>
+
+      <nav className={`${styles.navLinks} ${isMenuOpen ? styles.navLinksOpen : ''}`}>
+        <a href="#about" onClick={closeMenu}>Обо мне</a>
+        <a href="#services" onClick={closeMenu}>Услуги</a>
+        <a href="#testimonials" onClick={closeMenu}>Отзывы</a>
+        <a href="#diplomas" onClick={closeMenu}>Дипломы</a>
+        <a href="#contacts" onClick={closeMenu}>Контакты</a>
       </nav>
 
       <div className={styles.headerActions}>

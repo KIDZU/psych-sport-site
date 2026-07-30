@@ -5,13 +5,15 @@ const About = () => {
     <section className={styles.wrapper} id="about">
       <div className={styles.grid}>
         
-        {/* Левая часть: картинка */}
-        <div className={styles.imageWrapper}>
-          <img src="/medal.jpg" alt="Спортсменка с медалью" className={styles.mainImg} />
+        <div className={styles.rightCol}>
+          {/* Отдельный контейнер для фото + затемнения */}
+          <div className={styles.imageWrapper}>
+            <img src="/hero.jpg" alt="Мария Багирова" className={styles.mainImg} />
+            <div className={styles.imageOverlay}></div>
+          </div>
         </div>
 
-        {/* Правая часть: текст */}
-        <div className={styles.content}>
+        <div className={styles.leftCol}>
           <span className={`${styles.label} ${styles.labelAccent}`}>Обо мне</span>
           <h2 className={styles.title}>
             Я рядом, чтобы помочь<br />
