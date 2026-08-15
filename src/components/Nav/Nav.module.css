@@ -83,6 +83,7 @@
   transition: all 0.3s ease;
 }
 
+/* ===== НОВЫЕ СТИЛИ ДЛЯ СОЦСЕТЕЙ ===== */
 .headerActions {
   display: flex;
   align-items: center;
@@ -92,25 +93,36 @@
 .socialIcons {
   display: flex;
   gap: 0.5rem;
+  align-items: center;
 }
 
-.iconBtn {
-  background: rgba(255, 255, 255, 0.05);
-  border: none;
-  color: white;
-  width: 46px;
-  height: 46px;
-  border-radius: 50%;
-  cursor: pointer;
+/* Ссылка-обертка для иконки */
+.iconLink {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.3s;
-  font-size: 20px;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
 }
 
-.iconBtn:hover {
-  background: rgba(255, 255, 255, 0.1);
+.iconLink:hover {
+  background: rgba(227, 116, 40, 0.15);
+  transform: scale(1.05);
+}
+
+/* Сама иконка */
+.iconSvg {
+  width: 24px;
+  height: 24px;
+  color: #E37428; /* Оранжевый цвет */
+  transition: color 0.3s ease;
+}
+
+.iconLink:hover .iconSvg {
+  color: #FF9A59; /* Светло-оранжевый при наведении */
 }
 
 .btnPrimary {
@@ -130,82 +142,49 @@
   background-color: #FF9A59;
 }
 
-/* ============== АДАПТИВ (ПЛАНШЕТ И МОБИЛЬНЫЕ) ============== */
+/* ============== АДАПТИВ ============== */
 
-/* ШАГ 1: Диапазон 1025px - 1200px (Уменьшаем отступы и шрифт, чтобы слова не переносились) */
 @media (min-width: 1025px) and (max-width: 1200px) {
-  .navLinks {
-    gap: 1.5rem; /* Сильно уменьшаем отступы */
-  }
-  .navLinks a {
-    font-size: 25px; /* Уменьшаем шрифт для компактности */
-  }
-  .brandName {
-    font-size: 1.6rem; /* Чуть уменьшаем логотип */
-  }
+  .navLinks { gap: 1.5rem; }
+  .navLinks a { font-size: 25px; }
+  .brandName { font-size: 1.6rem; }
 }
 
-/* ШАГ 2: Планшеты (768px - 1024px) */
 @media (max-width: 1024px) {
-  .navLinks {
-    gap: 2rem;
-  }
-  .navLinks a {
-    font-size: 18px;
-  }
+  .navLinks { gap: 2rem; }
+  .navLinks a { font-size: 18px; }
 }
-/* Адаптация логотипа и иконок соцсетей при 960px и меньше */
+
 @media (max-width: 960px) {
-  .brandName {
-    font-size: 1.5rem; /* Уменьшаем имя */
-  }
-  .brandSub {
-    font-size: 0.85rem; /* Уменьшаем подпись */
-  }
-  .navLinks {
-    gap: 2rem;
-  }
-   .navLinks a {
-    font-size: 18px;
-  }
+  .brandName { font-size: 1.5rem; }
+  .brandSub { font-size: 0.85rem; }
+  .navLinks { gap: 2rem; }
+  .navLinks a { font-size: 18px; }
 }
-  @media (max-width: 940px) {
-  .brandName {
-    font-size: 1rem; /* Уменьшаем имя */
-  }
-  .brandSub {
-    font-size: 0.5rem; /* Уменьшаем подпись */
-  }
-  .navLinks {
-    gap: 2rem;
-  }
-   .navLinks a {
-    font-size: 16px;
-  }
+
+@media (max-width: 940px) {
+  .brandName { font-size: 1rem; }
+  .brandSub { font-size: 0.5rem; }
+  .navLinks { gap: 2rem; }
+  .navLinks a { font-size: 16px; }
   
-  /* Уменьшаем иконки соцсетей */
-  .iconBtn {
+  .iconLink {
     width: 30px;
     height: 30px;
-    font-size: 16px; /* Размер самой иконки внутри кнопки */
   }
-  .btnPrimary{
-    padding: 0.6rem 1rem;
-  }
-}
-
-/* ШАГ 3: Мобильные телефоны (до 768px) */
-@media (max-width: 768px) {
-  .brandName {
-    font-size: 1.25rem;
-  }
-  .brandSub {
-    font-size: 0.75rem;
+  .iconSvg {
+    width: 16px;
+    height: 16px;
   }
   
-  .burger {
-    display: flex;
-  }
+  .btnPrimary { padding: 0.6rem 1rem; }
+}
+
+@media (max-width: 768px) {
+  .brandName { font-size: 1.25rem; }
+  .brandSub { font-size: 0.75rem; }
+  
+  .burger { display: flex; }
   
   .navLinks {
     position: absolute;
@@ -229,11 +208,7 @@
     opacity: 1;
   }
   
-  .navLinks a {
-    font-size: 20px;
-  }
+  .navLinks a { font-size: 20px; }
   
-  .headerActions {
-    display: none; /* Скрываем соцсети и кнопку на мобильных */
-  }
+  .headerActions { display: none; }
 }
